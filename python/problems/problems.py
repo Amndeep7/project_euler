@@ -13,10 +13,11 @@ def format_time(start, end):
     else:
         return str(delta) + "s"
 
+# python3 problems.py num_problem num_attempt_version
 def main():
     problem = import_module(sys.argv[1], "problems")
     start = timer()
-    solution = problem.solve()
+    solution = problem.solve(sys.argv[2])
     end = timer()
     print(solution)
     print(format_time(start, end))
