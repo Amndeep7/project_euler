@@ -2,6 +2,12 @@ from importlib import import_module
 from timeit import default_timer as timer
 import sys
 
+def get_attempt(problem, attempt_ver):
+    return getattr(problem, "attempt%s" % attempt_ver)
+
+def get_args(problem):
+    return getattr(problem, "ARGS")
+
 def format_time(start, end):
     delta = end-start
     if delta < (1/1000)/100:
@@ -17,7 +23,7 @@ def format_time(start, end):
 def main():
     problem = import_module(sys.argv[1], "problems")
     start = timer()
-    solution = problem.solve(sys.argv[2])
+    solution = get_attempt(problem, sys.argv[2])(get_args(problem))
     end = timer()
     print(solution)
     print(format_time(start, end))
