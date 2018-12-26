@@ -1,2 +1,6 @@
 # vim spam
 .*.un~
+
+# ignore executables and other compilation/runtime cruft
+c/bin/
+python/problems/__pycache__/
